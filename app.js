@@ -1,0 +1,1 @@
+const deployedURL = "https://job-tracker-emestiza.herokuapp.com/" 
