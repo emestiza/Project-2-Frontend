@@ -143,6 +143,16 @@ getJob();
   $deleteButton.on("click", deleteJob)
 
 
+
+// Hamburger Toggle
+jQuery(function($){
+    $( '.navbar.navbar-4' ).click(function(){
+    $('.navbar-toggler-icon').toggleClass('expand')
+    })
+ })
+
+
+ // Post MVP 
 // Table Actions
 // $(document).ready(function(){
 // 	$('[data-toggle="tooltip"]').tooltip();
@@ -201,12 +211,3 @@ getJob();
 // 		$(".add-new").removeAttr("disabled");
 //     });
 // });
-
-
-
-// Hamburger Toggle
-jQuery(function($){
-    $( '.navbar.navbar-4' ).click(function(){
-    $('.navbar-toggler-icon').toggleClass('expand')
-    })
- })
