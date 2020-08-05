@@ -38,8 +38,8 @@ const getJob = async () => {
       $tr.append($('<td>').text(`${job.onsite}`));
       $tr.append($('<td>').text(`${job.offer}`));
       $tr.append($('<td>').text(`${job.url}`));
-      $tr.append($('<td>').append($('<button>').text("update").addClass("update")));
-      $tr.append($('<td>').append($('<button>').text("delete").addClass("delete")));
+      $tr.append($('<td>').append($('<button>').text("Update").addClass("update")));
+      $tr.append($('<td>').append($('<button>').text("Delete").addClass("delete")));
       // append the whole <tr> to the <tbody>
       $jobBody.append($tr)
     })
@@ -128,7 +128,7 @@ getJob();
 
 
 
-  
+
 // Hamburger Toggle
 jQuery(function($){
     $( '.navbar.navbar-4' ).click(function(){
