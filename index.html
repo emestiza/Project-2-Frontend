@@ -95,7 +95,7 @@
     
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2">Create Job Row Form</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -107,16 +107,34 @@
               </button>
             </div>
           </div>
-    
-          <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
-    
+
+          <div class="form">
+            <form action="/action_page.php">
+                <label for="name">Company:</label>
+                <input type="text" id="company" name="name"><br><br>
+                <label for="name">Position:</label>
+                <input type="text" id="position" name="name"><br><br>
+                <label for="name">Location:</label>
+                <input type="text" id="location" name="name"><br><br>
+                <label for="name">Date Applied:</label>
+                <input type="text" id="date" name="name"><br><br>
+                <label for="name">Phone Interview:</label>
+                <input type="text" id="phone" name="name"><br><br>
+                <label for="name">Oniste Interview:</label>
+                <input type="text" id="onsite" name="name"><br><br>
+                <label for="name">Offer:</label>
+                <input type="text" id="offer" name="name"><br><br>
+                <label for="name">Job URL:</label>
+                <input type="text" id="url" name="name"><br><br>
+                <!-- <input type="submit" value="Create"> -->
+            </form>
+            <button class="create">Create</button>
+          </div>
+        
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Job Application Data</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary add-new" id="create">Create</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" id="update">Update</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" id="delete">Delete</button>
               </div>
             </div>
           </div>
@@ -124,12 +142,12 @@
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
-                  <th>Company Name</th>
-                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Position</th>
                   <th>Location</th>
                   <th>Date Applied</th>
-                  <th>Phone Interview Date</th>
-                  <th>Onsite Interview Date</th>
+                  <th>Phone Interview</th>
+                  <th>Onsite Interview</th>
                   <th>Offer</th>
                   <th>Job URL</th>
                   <th>Update</th>
@@ -138,19 +156,7 @@
               </thead>
               <tbody id="jobBody">
                 <tr>
-                    <!-- <td>Tesla</td>
-                    <td>Software Engineer</td>
-                    <td>Palo Alto, California</td>
-                    <td>8/3/20</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>https://www.tesla.com/careers/job/software-engineerdataplatform-40000</td>
-                    <td>
-                        <a class="add" title="Add" data-toggle="tooltip" id="create"><i class="material-icons">&#xE03B;</i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip" id="update"><i class="material-icons">&#xE254;</i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip" id="delete"><i class="material-icons">&#xE872;</i></a>
-                    </td> -->
+                    <!-- <td></td> -->
                 </tr>
               </tbody>
             </table>

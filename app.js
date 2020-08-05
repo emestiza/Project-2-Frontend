@@ -4,9 +4,16 @@ const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
 //GLOBAL VARIABLES
 const $createButton = $("#create");
-const $updateButton = $("#update");
-const $deleteButton = $("#delete");
 const $jobBody = $("#jobBody");
+
+const $company = $("#company");
+const $position = $("#position");
+const $location = $("#location");
+const $date = $("#date");
+const $phone = $("#phone");
+const $onsite = $("#onsite");
+const $offer = $("#offer");
+const $url = $("#url");
 
 // Get all job rows
 const getJob = async () => {
@@ -30,8 +37,8 @@ const getJob = async () => {
       $tr.append($('<td>').text(`${job.onsite}`));
       $tr.append($('<td>').text(`${job.offer}`));
       $tr.append($('<td>').text(`${job.url}`));
-      $tr.append($('<td>').button($updateButton));
-      $tr.append($('<td>').button($deleteButton));
+      $tr.append($('<td>').append($('<button>').text("update").addClass("update")));
+      $tr.append($('<td>').append($('<button>').text("delete").addClass("update")));
       // append the whole <tr> to the <tbody>
       $jobBody.append($tr)
     })
@@ -43,28 +50,14 @@ getJob();
 //   const createJob = async () => {
 //     // Create new job row from table data
 //     const newJob = {
-//             // make a new <tr> element
-//       const $tr = $('<tr>')
-//       // add job info as <td> in the <tr>
-//       $tr.append($('<td>').text(`${job.company}`));
-//       $tr.append($('<td>').text(`${job.position}`));
-//       $tr.append($('<td>').text(`${job.location}`));
-//       $tr.append($('<td>').text(`${job.date}`));
-//       $tr.append($('<td>').text(`${job.phone}`));
-//       $tr.append($('<td>').text(`${job.onsite}`));
-//       $tr.append($('<td>').text(`${job.offer}`));
-//       $tr.append($('<td>').text(`${job.url}`));
-
-//       // company: .val(),
-//       // position: .val(),
-//       // location: .val(),
-//       // date: .val(),
-//       // phone: .val(),
-//       // onsite: .val(),
-//       // offer: .val(),
-//       // url: .val()
-//       // append the whole <tr> to the <tbody>
-//       $jobBody.append($tr)
+//       company: $company.val(),
+//       position: $position.val(),
+//       location: $location.val(),
+//       date: $date.val(),
+//       phone: $phone.val(),
+//       onsite: $onsite.val(),
+//       offer: $offer.val(),
+//       url: $url.val()
 //     };
 
 //     //Send request to api to create job
@@ -74,6 +67,7 @@ getJob();
 //       body: JSON.stringify(newJob)
 //     });
 //     const data = response.json();
+   
 //     //update the DOM
 //     $jobBody.empty();
 //     getJob();
@@ -138,10 +132,9 @@ getJob();
   //add create function to create button
   $createButton.on('click', createJob);
   //add update function to update button
-  $updateButton.on("click", updateJob)
+//   $updateButton.on("click", updateJob)
   //add delete function to delete button
-  $deleteButton.on("click", deleteJob)
-
+//   $deleteButton.on("click", deleteJob)
 
 
 // Hamburger Toggle
