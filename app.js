@@ -3,9 +3,6 @@ const deployedURL = "https://job-tracker-emestiza.herokuapp.com";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
 
 //GLOBAL VARIABLES
-const $createButton = $("#create");
-const $jobBody = $("#jobBody");
-
 const $company = $("#company");
 const $position = $("#position");
 const $location = $("#location");
@@ -14,6 +11,10 @@ const $phone = $("#phone");
 const $onsite = $("#onsite");
 const $offer = $("#offer");
 const $url = $("#url");
+const $createButton = $(".create");
+const $updateButton = $(".update");
+const $deleteButton = $(".delete");
+const $jobBody = $("#jobBody");
 
 // Get all job rows
 const getJob = async () => {
@@ -38,7 +39,7 @@ const getJob = async () => {
       $tr.append($('<td>').text(`${job.offer}`));
       $tr.append($('<td>').text(`${job.url}`));
       $tr.append($('<td>').append($('<button>').text("update").addClass("update")));
-      $tr.append($('<td>').append($('<button>').text("delete").addClass("update")));
+      $tr.append($('<td>').append($('<button>').text("delete").addClass("delete")));
       // append the whole <tr> to the <tbody>
       $jobBody.append($tr)
     })
@@ -120,9 +121,14 @@ getJob();
   //add update function to update button
 //   $updateButton.on("click", updateJob)
   //add delete function to delete button
-//   $deleteButton.on("click", deleteJob)
+  $deleteButton.on("click", deleteJob)
 
 
+
+
+
+
+  
 // Hamburger Toggle
 jQuery(function($){
     $( '.navbar.navbar-4' ).click(function(){
