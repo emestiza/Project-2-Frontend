@@ -80,20 +80,6 @@ getJob();
 //     console.log(event)
 //     // Create updated job object
 //     const updatedJob = {
-//             // make a new <tr> element
-//       const $tr = $('<tr>')
-//       // add job info as <td> in the <tr>
-//       $tr.append($('<td>').text(`${job.company}`));
-//       $tr.append($('<td>').text(`${job.position}`));
-//       $tr.append($('<td>').text(`${job.location}`));
-//       $tr.append($('<td>').text(`${job.date}`));
-//       $tr.append($('<td>').text(`${job.phone}`));
-//       $tr.append($('<td>').text(`${job.onsite}`));
-//       $tr.append($('<td>').text(`${job.offer}`));
-//       $tr.append($('<td>').text(`${job.url}`));
-//       // append the whole <tr> to the <tbody>
-//       $jobBody.append($tr)
-      
 //       // company: .val(),
 //       // position: .val(),
 //       // location: .val(),
