@@ -1,9 +1,7 @@
 //SET URL SO IT USES DEPLOYED API URL IF IT EXISTS, LOCALHOST IF IT DOESN'T
-const deployedURL = "https://job-tracker-emestiza.herokuapp.com";
 // const deployedURL = "http://localhost:3000";
+const deployedURL = "https://job-tracker-emestiza.herokuapp.com";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
-
-
 
 //GLOBAL VARIABLES
 const $company = $("#company");
@@ -127,7 +125,7 @@ getJob();
   //add create function to create button
   $createButton.on('click', createJob);
   //add update function to update button
-  $updateButton.on("click", updateJob)
+//   $updateButton.on("click", updateJob)
   //add delete function to delete button
 //   $deleteButton.on("click", deleteJob)
 
@@ -135,14 +133,6 @@ getJob();
 
 
 
-
-
-// Hamburger Toggle
-jQuery(function($){
-    $( '.navbar.navbar-4' ).click(function(){
-    $('.navbar-toggler-icon').toggleClass('expand')
-    })
- })
 
 
  // Post MVP 

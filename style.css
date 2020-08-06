@@ -180,11 +180,3 @@ table.table .form-control.error {
 table.table td .add {
     display: none;
 }
-
-/* Responsive Design */
-@media (max-width: 760px) {
-    /* Hamburger Navigation */
-    .navbar.navbar-4 .navbar-toggler-icon {
-        background-image: url('https://mdbootstrap.com/img/svg/hamburger7.svg?color=BFE100');
-    }
-}
