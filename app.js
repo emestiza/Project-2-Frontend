@@ -1,6 +1,9 @@
 //SET URL SO IT USES DEPLOYED API URL IF IT EXISTS, LOCALHOST IF IT DOESN'T
 const deployedURL = "https://job-tracker-emestiza.herokuapp.com";
+// const deployedURL = "http://localhost:3000";
 const URL = deployedURL ? deployedURL : "http://localhost:3000";
+
+
 
 //GLOBAL VARIABLES
 const $company = $("#company");
@@ -12,8 +15,8 @@ const $onsite = $("#onsite");
 const $offer = $("#offer");
 const $url = $("#url");
 const $createButton = $(".create");
-const $updateButton = $(".update");
-const $deleteButton = $(".delete");
+// const $updateButton = $(".update");
+// const $deleteButton = $(".delete");
 const $jobBody = $("#jobBody");
 
 // Get all job rows
@@ -30,7 +33,7 @@ const getJob = async () => {
       // make a new <tr> element
       const $tr = $('<tr>')
       // add job info as <td> in the <tr>
-      $tr.append($('<td>').text(`${job.company}`));
+      $tr.append($('<td>').text(job.company));
       $tr.append($('<td>').text(`${job.position}`));
       $tr.append($('<td>').text(`${job.location}`));
       $tr.append($('<td>').text(`${job.date}`));
@@ -38,77 +41,82 @@ const getJob = async () => {
       $tr.append($('<td>').text(`${job.onsite}`));
       $tr.append($('<td>').text(`${job.offer}`));
       $tr.append($('<td>').text(`${job.url}`));
-      $tr.append($('<td>').append($('<button>').text("Update").addClass("update")));
-      $tr.append($('<td>').append($('<button>').text("Delete").addClass("delete")));
+      $tr.append($('<td>').append($('<button>').text("Update").addClass("update").attr("id", job._id)));
+      $tr.append($('<td>').append($('<button>').text("Delete").addClass("delete").attr("id", job._id)));
+      console.log(job._id)
       // append the whole <tr> to the <tbody>
       $jobBody.append($tr)
     })
+    $(".update").on("click", updateJob)
+    $(".delete").on("click", deleteJob)
+    console.log($(".delete"))
+
 };
 
 getJob();
 
 // Create job row
-//   const createJob = async () => {
-//     // Create new job row from table data
-//     const newJob = {
-//       company: $company.val(),
-//       position: $position.val(),
-//       location: $location.val(),
-//       date: $date.val(),
-//       phone: $phone.val(),
-//       onsite: $onsite.val(),
-//       offer: $offer.val(),
-//       url: $url.val()
-//     };
+  const createJob = async () => {
+    // Create new job row from table data
+    const newJob = {
+      company: $company.val(),
+      position: $position.val(),
+      location: $location.val(),
+      date: $date.val(),
+      phone: $phone.val(),
+      onsite: $onsite.val(),
+      offer: $offer.val(),
+      url: $url.val()
+    };
 
-//     //Send request to api to create job
-//     const response = await fetch(`${URL}/job`, {
-//       method: "post",
-//       headers: {"Content-Type": "application/json"},
-//       body: JSON.stringify(newJob)
-//     });
-//     const data = response.json();
+    //Send request to api to create job
+    const response = await fetch(`${URL}/job`, {
+      method: "post",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(newJob)
+    });
+    const data = response.json();
    
-//     //update the DOM
-//     $jobBody.empty();
-//     getJob();
-//   };
+    //update the DOM
+    $jobBody.empty();
+    getJob();
+  };
 
 // Update
   // Update a job row
-//   const updateJob = async (event) => {
-//     // Logging the event object
-//     console.log(event)
-//     // Create updated job object
-//     const updatedJob = {
-//       // company: .val(),
-//       // position: .val(),
-//       // location: .val(),
-//       // date: .val(),
-//       // phone: .val(),
-//       // onsite: .val(),
-//       // offer: .val(),
-//       // url: .val()
-//     }
-//     // Make put request
-//     const response = await fetch(`${URL}/job/${event.target.id}`, {
-//       method: "put",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(updatedJob)
-//     })
-//     // Update the DOM
-//     $jobBody.empty();
-//     getJob();
-//   }
+  const updateJob = async (event) => {
+    // Logging the event object
+    console.log(event)
+    // Create updated job object
+    const updatedJob = {
+        company: $company.val(),
+        position: $position.val(),
+        location: $location.val(),
+        date: $date.val(),
+        phone: $phone.val(),
+        onsite: $onsite.val(),
+        offer: $offer.val(),
+        url: $url.val()
+    }
+    // Make put request
+    const response = await fetch(`${URL}/job/${event.target.id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedJob)
+    })
+    // Update the DOM
+    $jobBody.empty();
+    getJob();
+  }
   
    // Delete job row
   const deleteJob = async (event) => {
+      console.log(event)
     // Make delete request
-    const response = await fetch(`${URL}/job/${event.target.id}`, {
-      method: "delete"
-    });
+    const response = await fetch(`${URL}/job/${event.target.id}`, {method: "delete"});
+
      //update the DOM
      $jobBody.empty();
      getJob();
@@ -119,9 +127,9 @@ getJob();
   //add create function to create button
   $createButton.on('click', createJob);
   //add update function to update button
-//   $updateButton.on("click", updateJob)
+  $updateButton.on("click", updateJob)
   //add delete function to delete button
-  $deleteButton.on("click", deleteJob)
+//   $deleteButton.on("click", deleteJob)
 
 
 
