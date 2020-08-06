@@ -13,9 +13,8 @@ const $onsite = $("#onsite");
 const $offer = $("#offer");
 const $url = $("#url");
 const $createButton = $(".create");
-// const $updateButton = $(".update");
-// const $deleteButton = $(".delete");
 const $jobBody = $("#jobBody");
+const $editModalWindow = $("#editModal")
 
 // Get all job rows
 const getJob = async () => {
@@ -31,7 +30,7 @@ const getJob = async () => {
       // make a new <tr> element
       const $tr = $('<tr>')
       // add job info as <td> in the <tr>
-      $tr.append($('<td>').text(job.company));
+      $tr.append($('<td>').text(`${job.company}`));
       $tr.append($('<td>').text(`${job.position}`));
       $tr.append($('<td>').text(`${job.location}`));
       $tr.append($('<td>').text(`${job.date}`));
@@ -39,12 +38,13 @@ const getJob = async () => {
       $tr.append($('<td>').text(`${job.onsite}`));
       $tr.append($('<td>').text(`${job.offer}`));
       $tr.append($('<td>').text(`${job.url}`));
-      $tr.append($('<td>').append($('<button>').text("Update").addClass("update").attr("id", job._id)));
+      $tr.append($('<td>').append($('<button>').text("Update").addClass("update").attr("id", job._id).attr("data-toggle","modal").attr("data-target", "modal" + `${job._id}`)));
       $tr.append($('<td>').append($('<button>').text("Delete").addClass("delete").attr("id", job._id)));
       console.log(job._id)
       // append the whole <tr> to the <tbody>
       $jobBody.append($tr)
     })
+    $editModalWindow.attr("data-target", "modal" + `${job._id}`)
     $(".update").on("click", updateJob)
     $(".delete").on("click", deleteJob)
     console.log($(".delete"))
@@ -80,7 +80,10 @@ getJob();
     getJob();
   };
 
-// Update
+// Modal function 
+
+
+// Update 
   // Update a job row
   const updateJob = async (event) => {
     // Logging the event object
@@ -124,15 +127,6 @@ getJob();
   getJob();
   //add create function to create button
   $createButton.on('click', createJob);
-  //add update function to update button
-//   $updateButton.on("click", updateJob)
-  //add delete function to delete button
-//   $deleteButton.on("click", deleteJob)
-
-
-
-
-
 
 
  // Post MVP 
