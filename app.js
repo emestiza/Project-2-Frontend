@@ -69,8 +69,6 @@ const getJob = async () => {
 
 };
 
-getJob();
-
 // Create job row
   const createJob = async () => {
     // Create new job row from table data
