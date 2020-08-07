@@ -2,7 +2,7 @@
 
 ## Project
 
-Link to completed project [here]().
+Link to completed project [here](https://job-tracker-em.netlify.app/).
 Link to project frontend [here](https://github.com/emestiza/Project-2-Frontend).
 Link to project backend [here](https://github.com/emestiza/Project-2-Backend).
 
@@ -61,19 +61,19 @@ Based on the initial logic defined in the previous sections, the logic is broken
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Frontend Strutcure | H | 2hrs| hrs | hrs |
-| Responsive Sesign | H | 4hrs | hrs | hrs|
-| Connect Frontend & Backend | H | 2hrs| hrs | hrs |
-| Debugging & Testing | M | 8hrs| hrs | hrs |
-| Application Deployment | H | 2hrs| hrs | hrs |
-| Bootstrap | L | 8hrs| hrs | hrs |
-| Total | H | 26hrs| hrs | hrs |
+| Frontend Strutcure | H | 2hrs| 1hrs | 1hrs |
+| Responsive Sesign | H | 4hrs | 2hrs | 2hrs|
+| Connect Frontend & Backend | H | 2hrs| 2hrs |2hrs |
+| Debugging & Testing | M | 8hrs| 8hrs | 8hrs |
+| Application Deployment | H | 2hrs| 1hrs | 1hrs |
+| Bootstrap | L | 8hrs| 8hrs |8hrs |
+| Total | H | 26hrs| 22hrs | 22hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Scocial Media Icons | L | 2hrs | hrs | hrs|
-| Total | H | 2hrs| hrs | hrs |
+| Scocial Media Icons | L | 2hrs | 0hrs | 0hrs|
+| Total | H | 2hrs| 0hrs | 0hrs |
 
 ## Additional Libraries
 This section lists all supporting libraries and thier role in the project. 
@@ -82,16 +82,45 @@ This section lists all supporting libraries and thier role in the project.
 
 ## Code Snippet
 
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description  
+This code snippet was essential from the frontend becasue without it the CRUD functions would not be possible. The functions pulls data from the backend and appends it in table format to the frontend.
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+// Get all job rows
+const getJob = async () => {
+    // Gets the job rows
+    const response = await fetch(`${URL}/job`);
+    const data = await response.json();
+    // Populate DOM with job rows
+    data.forEach((job) => {
+      // Make a new <tr> element
+      const $tr = $('<tr>')
+      // Add job info as <td> in the <tr>
+      $tr.append($('<td>').text(`${job.company}`));
+      $tr.append($('<td>').text(`${job.position}`));
+      $tr.append($('<td>').text(`${job.location}`));
+      $tr.append($('<td>').text(`${job.date}`));
+      $tr.append($('<td>').text(`${job.phone}`));
+      $tr.append($('<td>').text(`${job.onsite}`));
+      $tr.append($('<td>').text(`${job.offer}`));
+      const $updateButton = $('<button>').text("Update").addClass("update").attr("id", job._id).attr("data-toggle","modal").attr("data-target", "modal" + `${job._id}`);
+      $tr.append($('<td>').append($updateButton));
+      const $deleteButton = $('<button>').text("Delete").addClass("delete").attr("id", job._id);
+      $tr.append($('<td>').append($deleteButton));
+      $updateButton.on("click", () => {
+          openModal(job)
+      })
+      $deleteButton.on("click", (event) => {
+        deleteJob(event, job)
+    })
+      // Append the whole <tr> to the <tbody>
+      $jobBody.append($tr)
+    })
+};
 ```
 
 ## Issues and Resolutions
- Use this section to list of all major issues encountered and their resolution.
-
 **ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
-**RESOLUTION**: Missing comma after first object in sources {} object
+**RESOLUTION**: Missing ")" in jQuery line that appends table values 
+
+**ERROR**: Bootstrap hamburger navigation did not toggle                               
+**RESOLUTION**: Missing "ref" in the jQuery script
